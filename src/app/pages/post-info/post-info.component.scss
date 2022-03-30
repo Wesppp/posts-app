@@ -1,0 +1,50 @@
+@import "src/assets/mixin";
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+
+  .list {
+    list-style-type: none;
+    margin-top: 4rem;
+  }
+
+  .post {
+    margin-top: 1.5rem;
+    padding: 1.5rem;
+    border: 2px solid #00000057;
+
+    p {
+      font-size: 1.2rem;
+      margin-top: 1.2rem;
+      width: 100%;
+      word-break: break-all;
+    }
+
+    .post-title {
+      font-size: 2rem;
+    }
+  }
+
+  h1 {
+    @include my-h1;
+  }
+
+  h2 {
+    margin-top: 3rem;
+    color: #2a748a;
+  }
+
+  .comment {
+    margin: 20px 0;
+
+    .mat-card-subtitle {
+      margin-top: 10px;
+    }
+
+    hr {
+      opacity: .5;
+      margin: 20px 0;
+    }
+  }
+}

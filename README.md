@@ -1,3 +1,8 @@
+# How to launch
+
+Start the local json-server from the server folder with the command `json-server --watch db.json`.
+Then run the main project `npm run start`.
+
 # AppOfPosts
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.5.
