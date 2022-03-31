@@ -39,12 +39,6 @@ export class PostComponent implements OnInit {
     })
   }
 
-  getComments(id: number, post: Post) {
-    this.postService.getComments(id)
-      .subscribe(comments => this.globalService.updateComponent({comments, post}),
-        error => this.globalService.openSnackBar(error.message))
-  }
-
   openEditModal(post: Post, $event: any) {
     $event.stopPropagation()
       this.dialog.open(EditPostDialogComponent);

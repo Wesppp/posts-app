@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {GlobalService} from "../../services/global.service";
 import { Comment } from "../../interfaces/comment";
 import {Post} from "../../interfaces/post";
+import {ActivatedRoute, Params} from "@angular/router";
+import {PostService} from "../../services/post.service";
 
 @Component({
   selector: 'app-post-info',
@@ -13,16 +15,34 @@ export class PostInfoComponent implements OnInit {
   post: Post = {id: 0, title: '', body: ''}
   isLoading: boolean = false
 
-  constructor(private globalService: GlobalService) { }
+  constructor(private globalService: GlobalService,
+              private route: ActivatedRoute,
+              private postService: PostService) { }
 
   ngOnInit(): void {
     this.isLoading = true
-    this.globalService.updateObservable$.subscribe(data => {
-      if(data) {
-        this.comments = data.comments;
-        this.post = data.post
-        this.isLoading = false
-      }
-    }, error => this.globalService.openSnackBar(error.message))
+    this.route.params.subscribe((params: Params) => {
+      this.getPost(params['id'])
+      this.getComments(params['id'])
+      this.isLoading = false
+    })
+  }
+
+  getPost(id: number) {
+    this.postService.getPost(id)
+      .subscribe(post => {
+        if (post) {
+          this.post = post
+        }
+      })
+  }
+
+  getComments(id: number) {
+    this.postService.getComments(id)
+      .subscribe(comments => {
+        if (comments.length) {
+          this.comments = comments
+        }
+      })
   }
 }
