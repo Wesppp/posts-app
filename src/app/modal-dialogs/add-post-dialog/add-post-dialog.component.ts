@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {PostService} from "../../services/post.service";
 import {Post} from "../../interfaces/post";
 import {GlobalService} from "../../services/global.service";
@@ -6,7 +6,8 @@ import {GlobalService} from "../../services/global.service";
 @Component({
   selector: 'app-add-post-dialog',
   templateUrl: './add-post-dialog.component.html',
-  styleUrls: ['./add-post-dialog.component.scss']
+  styleUrls: ['./add-post-dialog.component.scss',
+    '../../../assets/post-dialog-styles.scss']
 })
 export class AddPostDialogComponent implements OnInit {
 
@@ -14,7 +15,8 @@ export class AddPostDialogComponent implements OnInit {
   post: Post = {id: 0, title: '', body: ''}
 
   constructor(private postService: PostService,
-              private globalService: GlobalService) { }
+              private globalService: GlobalService) {
+  }
 
   ngOnInit(): void {
   }
@@ -30,6 +32,6 @@ export class AddPostDialogComponent implements OnInit {
           this.globalService.openSnackBar("Post was added!")
           this.globalService.updateComponent({refresh: true});
         }
-      })
+      }, error => this.globalService.openSnackBar(error.message))
   }
 }

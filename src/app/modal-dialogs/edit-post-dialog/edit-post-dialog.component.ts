@@ -6,7 +6,8 @@ import {PostService} from "../../services/post.service";
 @Component({
   selector: 'app-edit-post-dialog',
   templateUrl: './edit-post-dialog.component.html',
-  styleUrls: ['./edit-post-dialog.component.scss']
+  styleUrls: ['./edit-post-dialog.component.scss',
+    '../../../assets/post-dialog-styles.scss']
 })
 export class EditPostDialogComponent implements OnInit {
   post: Post = {id: 0, title: '', body: ''}
