@@ -22,6 +22,10 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { CommentComponent } from "./pages/post-info/comment/comment.component";
 import { FilterPipe } from './pipes/filter.pipe';
 import { EditPostDialogComponent } from './modal-dialogs/edit-post-dialog/edit-post-dialog.component';
+import { ErrorPageComponent } from './pages/error-page/error-page.component';
+import { AppLayoutComponent } from './layouts/app-layout/app-layout.component';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatMenuModule} from "@angular/material/menu";
 
 @NgModule({
     declarations: [
@@ -32,7 +36,9 @@ import { EditPostDialogComponent } from './modal-dialogs/edit-post-dialog/edit-p
         PostInfoComponent,
         CommentComponent,
         FilterPipe,
-        EditPostDialogComponent
+        EditPostDialogComponent,
+        ErrorPageComponent,
+        AppLayoutComponent
     ],
   imports: [
     BrowserModule,
@@ -48,7 +54,9 @@ import { EditPostDialogComponent } from './modal-dialogs/edit-post-dialog/edit-p
     MatSnackBarModule,
     MatDividerModule,
     MatListModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatSidenavModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]

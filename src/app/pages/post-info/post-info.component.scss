@@ -1,50 +1,45 @@
 @import "src/assets/mixin";
 
-.container {
-  max-width: 800px;
-  margin: 0 auto;
+.list {
+  list-style-type: none;
+  margin-top: 4rem;
+}
 
-  .list {
-    list-style-type: none;
-    margin-top: 4rem;
+.post {
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  border: 2px solid #00000057;
+
+  p {
+    font-size: 1.2rem;
+    margin-top: 1.2rem;
+    width: 100%;
+    word-break: break-all;
   }
 
-  .post {
-    margin-top: 1.5rem;
-    padding: 1.5rem;
-    border: 2px solid #00000057;
+  .post-title {
+    font-size: 2rem;
+  }
+}
 
-    p {
-      font-size: 1.2rem;
-      margin-top: 1.2rem;
-      width: 100%;
-      word-break: break-all;
-    }
+h1 {
+  @include my-h1;
+}
 
-    .post-title {
-      font-size: 2rem;
-    }
+h2 {
+  margin-top: 3rem;
+  color: #2a748a;
+}
+
+.comment {
+  margin: 20px 0;
+
+  .mat-card-subtitle {
+    margin-top: 10px;
   }
 
-  h1 {
-    @include my-h1;
-  }
-
-  h2 {
-    margin-top: 3rem;
-    color: #2a748a;
-  }
-
-  .comment {
+  hr {
+    opacity: .5;
     margin: 20px 0;
-
-    .mat-card-subtitle {
-      margin-top: 10px;
-    }
-
-    hr {
-      opacity: .5;
-      margin: 20px 0;
-    }
   }
 }

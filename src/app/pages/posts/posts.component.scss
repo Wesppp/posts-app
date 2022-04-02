@@ -1,33 +1,32 @@
 @import "src/assets/mixin";
 
-.container {
-  max-width: 800px;
-  margin: 0 auto;
+#search {
+  width: 90%;
+  font-size: 1.2rem;
+  border-radius: 5px;
+  padding: 0.3rem;
+  font-family: Roboto, sans-serif;
+  margin: 20px 0;
+}
 
-  #search {
-    width: 100%;
-    font-size: 1.2rem;
-    border-radius: 5px;
-    padding: 0.3rem;
-    font-family: Roboto, sans-serif;
-    margin: 20px 0;
-  }
+.search {
+  text-align: center;
+}
 
-  h1 {
-    @include my-h1;
-  }
+h1 {
+  @include my-h1;
+}
 
-  hr {
-    margin: 0;
-  }
+hr {
+  margin: 0;
+}
 
-  .btns {
-    display: flex;
-    margin-right: 10px;
+.btns {
+  display: flex;
+  margin-right: 10px;
 
-    button {
-      border-bottom-left-radius: 0;
-      border-bottom-right-radius: 0;
-    }
+  button {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
   }
 }

@@ -1,27 +1,24 @@
-<div class="container">
+<h1>Post</h1>
+<mat-card class="post">
+  <mat-card-title class="post-title">{{ post.title }}</mat-card-title>
+  <mat-card-subtitle>
+    <p>
+      {{ post.body }}
+    </p>
+  </mat-card-subtitle>
+</mat-card>
 
-  <h1>Post</h1>
-  <mat-card class="post">
-    <mat-card-title class="post-title">{{ post.title }}</mat-card-title>
-    <mat-card-subtitle>
-      <p>
-        {{ post.body }}
-      </p>
-    </mat-card-subtitle>
-  </mat-card>
+<ul class="list">
+  <li *ngFor="let comment of comments">
+    <app-comment [comment]="comment"></app-comment>
+  </li>
+</ul>
 
-  <ul class="list">
-    <li *ngFor="let comment of comments">
-      <app-comment [comment]="comment"></app-comment>
-    </li>
-  </ul>
-
-  <div class="progress-spinner" *ngIf="isLoading">
-    <mat-progress-spinner
-      class="example-margin"
-      color="primary"
-      mode="indeterminate"
-      [value]="50">
-    </mat-progress-spinner>
-  </div>
+<div class="progress-spinner" *ngIf="isLoading">
+  <mat-progress-spinner
+    class="example-margin"
+    color="primary"
+    mode="indeterminate"
+    [value]="50">
+  </mat-progress-spinner>
 </div>
