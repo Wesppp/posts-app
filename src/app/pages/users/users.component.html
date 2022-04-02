@@ -1,0 +1,23 @@
+<h1>Users-list</h1>
+
+<hr>
+
+<mat-grid-list id="users-grid" cols="2" rowHeight="2:1">
+  <mat-grid-tile *ngFor="let user of users">
+    <div class="user-card">
+      <img class="avatar" src="./assets/avatars/avatar6.png" alt="Avatar">
+      <h2 class="name">{{ user.name }}</h2>
+      <p class="email">{{ user.email }}</p>
+      <p class="job">works in {{ user.company.name }}</p>
+    </div>
+  </mat-grid-tile>
+</mat-grid-list>
+
+<div class="progress-spinner" *ngIf="isLoading">
+  <mat-progress-spinner
+    class="example-margin"
+    color="primary"
+    mode="indeterminate"
+    [value]="50">
+  </mat-progress-spinner>
+</div>

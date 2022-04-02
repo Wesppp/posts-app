@@ -26,6 +26,9 @@ import { ErrorPageComponent } from './pages/error-page/error-page.component';
 import { AppLayoutComponent } from './layouts/app-layout/app-layout.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatMenuModule} from "@angular/material/menu";
+import { UsersComponent } from './pages/users/users.component';
+import {MatGridListModule} from '@angular/material/grid-list';
+
 
 @NgModule({
     declarations: [
@@ -38,7 +41,8 @@ import {MatMenuModule} from "@angular/material/menu";
         FilterPipe,
         EditPostDialogComponent,
         ErrorPageComponent,
-        AppLayoutComponent
+        AppLayoutComponent,
+        UsersComponent
     ],
   imports: [
     BrowserModule,
@@ -56,7 +60,8 @@ import {MatMenuModule} from "@angular/material/menu";
     MatListModule,
     MatProgressSpinnerModule,
     MatSidenavModule,
-    MatMenuModule
+    MatMenuModule,
+    MatGridListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

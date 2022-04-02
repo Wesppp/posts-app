@@ -4,6 +4,7 @@ import {PostsComponent} from "./pages/posts/posts.component";
 import {PostInfoComponent} from "./pages/post-info/post-info.component";
 import {ErrorPageComponent} from "./pages/error-page/error-page.component";
 import {AppLayoutComponent} from "./layouts/app-layout/app-layout.component";
+import {UsersComponent} from "./pages/users/users.component";
 
 const routes: Routes = [
   {
@@ -11,6 +12,7 @@ const routes: Routes = [
       {path: '', redirectTo: '/posts', pathMatch: 'full'},
       {path: 'posts', component: PostsComponent},
       {path: 'posts/:id', component: PostInfoComponent},
+      {path: 'users', component: UsersComponent},
       {path: 'error-page', component: ErrorPageComponent},
       {path: '**', redirectTo: '/error-page', pathMatch: 'full'}
     ]

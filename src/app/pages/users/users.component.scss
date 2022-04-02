@@ -1,0 +1,39 @@
+@import "src/assets/mixin";
+h1 {
+  @include my-h1;
+}
+
+#users-grid {
+
+  mat-grid-tile {
+    background: lightblue;
+    cursor: pointer;
+    transition: 0.3s;
+
+    &:hover {
+      @include custom-blue-hover(0.9)
+    }
+  }
+
+  .user-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    p {
+      margin: 0;
+      color: #6c757d;
+    }
+
+    h2 {
+      margin: 0;
+    }
+
+    .avatar {
+      width: 100px;
+      margin-bottom: 15px;
+    }
+  }
+}
+
