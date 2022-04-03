@@ -19,4 +19,8 @@ export class UserService {
     const url = `${this.usersUrl}/${id}`
     return this.http.get<User>(url);
   }
+
+  getAvatar(id: number) {
+    return `./assets/avatars/avatar${id}.png`
+  }
 }

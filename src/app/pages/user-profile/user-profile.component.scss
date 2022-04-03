@@ -1,0 +1,61 @@
+mat-grid-list {
+  margin-top: 6rem;
+
+  mat-grid-tile {
+    background: #add8e661;
+
+    .user-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      p {
+        margin: 0;
+        color: #6c757d;
+      }
+
+      h2 {
+        margin: 0;
+      }
+
+      .avatar {
+        width: 100px;
+        margin-bottom: 15px;
+      }
+    }
+
+    ul {
+      width: 100%;
+      list-style-type: none;
+      padding: 0;
+
+      li {
+        font-size: 1.2rem;
+        margin: 1rem 0.5rem;
+        display: flex;
+
+        .info-title {
+          font-weight: 600;
+          width: 150px;
+        }
+
+        .info-text {
+
+        }
+      }
+
+      hr {
+        margin: 0;
+        padding: 0;
+      }
+    }
+  }
+}
+
+.additional-info {
+  text-align: center;
+  background: aliceblue;
+  color: rgba(0, 0, 0, 0.52);
+}
+

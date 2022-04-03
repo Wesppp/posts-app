@@ -28,6 +28,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatMenuModule} from "@angular/material/menu";
 import { UsersComponent } from './pages/users/users.component';
 import {MatGridListModule} from '@angular/material/grid-list';
+import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import {MatGridListModule} from '@angular/material/grid-list';
         EditPostDialogComponent,
         ErrorPageComponent,
         AppLayoutComponent,
-        UsersComponent
+        UsersComponent,
+        UserProfileComponent
     ],
   imports: [
     BrowserModule,

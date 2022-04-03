@@ -11,7 +11,6 @@ import {GlobalService} from "../../services/global.service";
 export class UsersComponent implements OnInit {
 
   users: User[] = []
-  avatars: string[] = []
   isLoading: boolean = false
 
   constructor(private userService: UserService,
@@ -20,7 +19,6 @@ export class UsersComponent implements OnInit {
   ngOnInit(): void {
     this.isLoading = true
     this.getUsers()
-
   }
 
   getUsers() {
@@ -28,9 +26,13 @@ export class UsersComponent implements OnInit {
       .subscribe(users => {
         if (users.length) {
           this.users = users
+          console.log(users)
           this.isLoading = false
         }
       }, error => this.globalService.openSnackBar(error.message))
   }
 
+  getAvatar(id: number) {
+    return this.userService.getAvatar(id)
+  }
 }
