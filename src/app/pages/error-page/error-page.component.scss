@@ -1,0 +1,22 @@
+@import "src/assets/mixin";
+.error-block {
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  h1 {
+    @include my-h1;
+    transform: scale(1.2);
+    font-weight: 500;
+  }
+
+  p {
+    font-size: 1.1rem;
+
+    a {
+
+    }
+  }
+}

@@ -1,9 +1,9 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import {Pipe, PipeTransform} from '@angular/core';
 
 @Pipe({
   name: 'filter'
 })
-export class FilterPipe<T,K> implements PipeTransform {
+export class FilterPipe implements PipeTransform {
 
   transform<T, K extends keyof T>(data: T[], key: K, search: string = ''): T[] {
     if (!search.trim()) {

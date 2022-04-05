@@ -1,9 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Post} from "../../../interfaces/post";
-import {PostService} from "../../../services/post.service";
+import {Post} from "../../../shared/interfaces/post";
+import {PostService} from "../../../shared/services/post.service";
 import {MatDialog} from "@angular/material/dialog";
-import {EditPostDialogComponent} from "../../../modal-dialogs/edit-post-dialog/edit-post-dialog.component";
-import {GlobalService} from "../../../services/global.service";
+import {EditPostDialogComponent} from "../../../components/modal-dialogs/edit-post-dialog/edit-post-dialog.component";
+import {GlobalService} from "../../../shared/services/global.service";
 
 @Component({
   selector: 'app-post',

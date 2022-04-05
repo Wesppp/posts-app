@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {GlobalService} from "../../services/global.service";
-import { Comment } from "../../interfaces/comment";
-import {Post} from "../../interfaces/post";
+import {GlobalService} from "../../shared/services/global.service";
+import { Comment } from "../../shared/interfaces/comment";
+import {Post} from "../../shared/interfaces/post";
 import {ActivatedRoute, Params} from "@angular/router";
-import {PostService} from "../../services/post.service";
+import {PostService} from "../../shared/services/post.service";
 
 @Component({
   selector: 'app-post-info',
@@ -34,7 +34,7 @@ export class PostInfoComponent implements OnInit {
         if (post) {
           this.post = post
         }
-      })
+      }, error => this.globalService.openSnackBar(error.message()))
   }
 
   getComments(id: number) {
@@ -43,6 +43,6 @@ export class PostInfoComponent implements OnInit {
         if (comments.length) {
           this.comments = comments
         }
-      })
+      }, error => this.globalService.openSnackBar(error.message()))
   }
 }

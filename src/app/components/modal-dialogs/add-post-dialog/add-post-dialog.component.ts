@@ -1,13 +1,13 @@
 import {Component, OnInit} from '@angular/core';
-import {PostService} from "../../services/post.service";
-import {Post} from "../../interfaces/post";
-import {GlobalService} from "../../services/global.service";
+import {PostService} from "../../../shared/services/post.service";
+import {Post} from "../../../shared/interfaces/post";
+import {GlobalService} from "../../../shared/services/global.service";
 
 @Component({
   selector: 'app-add-post-dialog',
   templateUrl: './add-post-dialog.component.html',
   styleUrls: ['./add-post-dialog.component.scss',
-    '../../../assets/post-dialog-styles.scss']
+    '../../../../assets/post-dialog-styles.scss']
 })
 export class AddPostDialogComponent implements OnInit {
 

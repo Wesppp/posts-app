@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import {BehaviorSubject} from "rxjs";
+import {Injectable} from '@angular/core';
+import {BehaviorSubject, Observable, of} from "rxjs";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import Swal from 'sweetalert2';
 
@@ -8,7 +8,8 @@ import Swal from 'sweetalert2';
 })
 export class GlobalService {
 
-  constructor(private snackBar: MatSnackBar) { }
+  constructor(private snackBar: MatSnackBar) {
+  }
 
   update = new BehaviorSubject<any>('');
   updateObservable$ = this.update.asObservable();
@@ -35,5 +36,15 @@ export class GlobalService {
       cancelButtonColor: '#d33',
       confirmButtonText: 'Yes, delete it!'
     })
+  }
+
+  handleError<T>(operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+      console.error(error)
+
+      console.log(`${operation} failed: ${error.message}`)
+
+      return of(result as T);
+    }
   }
 }
