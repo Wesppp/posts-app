@@ -2,8 +2,12 @@
 
 <hr>
 
+<div class="search">
+  <input class="search-input" type="text" [(ngModel)]="search" placeholder="Search for posts by name">
+</div>
+
 <mat-grid-list id="users-grid" cols="2" rowHeight="2:1">
-  <mat-grid-tile *ngFor="let user of users" [routerLink]="['/user-profile', user.id]">
+  <mat-grid-tile *ngFor="let user of users | filter:'name':search" [routerLink]="['/user-profile', user.id]">
     <div class="user-card">
       <img class="avatar" [src]="getAvatar(user.id)" alt="Avatar">
       <h2 class="name">{{ user.name }}</h2>
@@ -13,11 +17,4 @@
   </mat-grid-tile>
 </mat-grid-list>
 
-<div class="progress-spinner" *ngIf="isLoading">
-  <mat-progress-spinner
-    class="example-margin"
-    color="primary"
-    mode="indeterminate"
-    [value]="50">
-  </mat-progress-spinner>
-</div>
+<app-progress-spinner *ngIf="isLoading"></app-progress-spinner>

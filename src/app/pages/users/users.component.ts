@@ -12,6 +12,7 @@ export class UsersComponent implements OnInit {
 
   users: User[] = []
   isLoading: boolean = false
+  search: string = '';
 
   constructor(private userService: UserService,
               private globalService: GlobalService) { }

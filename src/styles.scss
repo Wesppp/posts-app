@@ -11,14 +11,20 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-.progress-spinner {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 3rem 0;
-}
-
 hr {
   opacity: .5;
   margin: 20px 0;
+}
+
+.search {
+  text-align: center;
+
+  .search-input {
+    width: 90%;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    padding: 0.3rem;
+    font-family: Roboto, sans-serif;
+    margin: 20px 0;
+  }
 }

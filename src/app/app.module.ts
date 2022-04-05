@@ -29,7 +29,7 @@ import {MatMenuModule} from "@angular/material/menu";
 import { UsersComponent } from './pages/users/users.component';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
-
+import { ProgressSpinnerComponent } from "./progress-spinner/progress-spinner.component";
 
 @NgModule({
     declarations: [
@@ -44,7 +44,8 @@ import { UserProfileComponent } from './pages/user-profile/user-profile.componen
         ErrorPageComponent,
         AppLayoutComponent,
         UsersComponent,
-        UserProfileComponent
+        UserProfileComponent,
+        ProgressSpinnerComponent
     ],
   imports: [
     BrowserModule,

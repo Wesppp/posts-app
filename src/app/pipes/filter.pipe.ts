@@ -3,15 +3,16 @@ import { Pipe, PipeTransform } from '@angular/core';
 @Pipe({
   name: 'filter'
 })
-export class FilterPipe implements PipeTransform {
+export class FilterPipe<T,K> implements PipeTransform {
 
-  transform(data: any[], search: string = ''): any[] {
+  transform<T, K extends keyof T>(data: T[], key: K, search: string = ''): T[] {
     if (!search.trim()) {
       return data
     }
 
     return data.filter(data => {
-      return data.title.toLowerCase().includes(search.toLowerCase())
+      // @ts-ignore
+      return data[key].toLowerCase().includes(search.toLowerCase())
     })
   }
 

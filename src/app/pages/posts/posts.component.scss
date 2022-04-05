@@ -1,18 +1,5 @@
 @import "src/assets/mixin";
 
-#search {
-  width: 90%;
-  font-size: 1.2rem;
-  border-radius: 5px;
-  padding: 0.3rem;
-  font-family: Roboto, sans-serif;
-  margin: 20px 0;
-}
-
-.search {
-  text-align: center;
-}
-
 h1 {
   @include my-h1;
 }

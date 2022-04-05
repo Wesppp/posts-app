@@ -7,19 +7,12 @@
 <hr>
 
 <div class="search">
-  <input id="search" type="text" [(ngModel)]="search" placeholder="Search for users by name">
+  <input class="search-input" type="text" [(ngModel)]="search" placeholder="Search for posts by name">
 </div>
 
 <div class="posts-container" *ngIf="!isLoading">
-  <app-post *ngFor="let post of posts | filter:search"
+  <app-post *ngFor="let post of posts | filter:'title':search"
             [post]="post" [posts]="posts"></app-post>
 </div>
 
-<div class="progress-spinner" *ngIf="isLoading">
-  <mat-progress-spinner
-    class="example-margin"
-    color="primary"
-    mode="indeterminate"
-    [value]="50">
-  </mat-progress-spinner>
-</div>
+<app-progress-spinner *ngIf="isLoading"></app-progress-spinner>
