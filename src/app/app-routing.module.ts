@@ -3,7 +3,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {PostsComponent} from "./pages/posts/posts.component";
 import {PostInfoComponent} from "./pages/post-info/post-info.component";
 import {ErrorPageComponent} from "./pages/error-page/error-page.component";
-import {AppLayoutComponent} from "./layouts/app-layout/app-layout.component";
+import {AppLayoutComponent} from "./shared/layouts/app-layout/app-layout.component";
 
 const routes: Routes = [
   {

@@ -15,17 +15,18 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import {MatDialogModule} from '@angular/material/dialog';
-import { AddPostDialogComponent } from './modal-dialogs/add-post-dialog/add-post-dialog.component';
+import { AddPostDialogComponent } from './components/modal-dialogs/add-post-dialog/add-post-dialog.component';
 import { PostInfoComponent } from './pages/post-info/post-info.component';
 import {MatListModule} from "@angular/material/list";
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { CommentComponent } from "./pages/post-info/comment/comment.component";
-import { FilterPipe } from './pipes/filter.pipe';
-import { EditPostDialogComponent } from './modal-dialogs/edit-post-dialog/edit-post-dialog.component';
+import { FilterPipe } from './shared/pipes/filter.pipe';
+import { EditPostDialogComponent } from './components/modal-dialogs/edit-post-dialog/edit-post-dialog.component';
 import { ErrorPageComponent } from './pages/error-page/error-page.component';
-import { AppLayoutComponent } from './layouts/app-layout/app-layout.component';
+import { AppLayoutComponent } from './shared/layouts/app-layout/app-layout.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatMenuModule} from "@angular/material/menu";
+import { ProgressSpinnerComponent } from './components/progress-spinner/progress-spinner.component';
 
 @NgModule({
     declarations: [
@@ -38,7 +39,8 @@ import {MatMenuModule} from "@angular/material/menu";
         FilterPipe,
         EditPostDialogComponent,
         ErrorPageComponent,
-        AppLayoutComponent
+        AppLayoutComponent,
+        ProgressSpinnerComponent
     ],
   imports: [
     BrowserModule,

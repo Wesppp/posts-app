@@ -14,11 +14,4 @@
   </li>
 </ul>
 
-<div class="progress-spinner" *ngIf="isLoading">
-  <mat-progress-spinner
-    class="example-margin"
-    color="primary"
-    mode="indeterminate"
-    [value]="50">
-  </mat-progress-spinner>
-</div>
+<app-progress-spinner *ngIf="isLoading"></app-progress-spinner>

@@ -1,9 +1,9 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {PostService} from "../../services/post.service";
-import {Post} from "../../interfaces/post";
+import {Component, OnInit} from '@angular/core';
+import {PostService} from "../../shared/services/post.service";
+import {Post} from "../../shared/interfaces/post";
 import {MatDialog} from "@angular/material/dialog";
-import {AddPostDialogComponent} from "../../modal-dialogs/add-post-dialog/add-post-dialog.component";
-import {GlobalService} from "../../services/global.service";
+import {AddPostDialogComponent} from "../../components/modal-dialogs/add-post-dialog/add-post-dialog.component";
+import {GlobalService} from "../../shared/services/global.service";
 
 @Component({
   selector: 'app-posts',
@@ -28,7 +28,7 @@ export class PostsComponent implements OnInit {
       if(res.refresh) {
         this.getPosts();
       }
-    })
+    }, error => this.globalService.openSnackBar(error.message))
   }
 
   openDialog() {
