@@ -11,7 +11,7 @@
 </div>
 
 <div class="posts-container" *ngIf="!isLoading">
-  <app-post *ngFor="let post of posts | filter:search"
+  <app-post *ngFor="let post of posts | filter:'title':search"
             [post]="post" [posts]="posts"></app-post>
 </div>
 
