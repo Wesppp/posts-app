@@ -2,8 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {PostService} from "../../shared/services/post.service";
 import {Post} from "../../shared/interfaces/post";
 import {MatDialog} from "@angular/material/dialog";
-import {AddPostDialogComponent} from "../../components/modal-dialogs/add-post-dialog/add-post-dialog.component";
 import {GlobalService} from "../../shared/services/global.service";
+import {PostCrudDialogComponent} from "../../components/modal-dialogs/post-crud-dialog/post-crud-dialog.component";
 
 @Component({
   selector: 'app-posts',
@@ -32,7 +32,20 @@ export class PostsComponent implements OnInit {
   }
 
   openDialog() {
-    this.dialog.open(AddPostDialogComponent);
+    this.dialog.open(PostCrudDialogComponent, {
+      data: {
+        title: 'Adding a new post',
+        func: (title: string, body: string, id?:number) => {
+          this.postService.addPost({title, body} as Post)
+            .subscribe(post => {
+              if (post) {
+                this.globalService.openSnackBar("Post was added!")
+                this.globalService.updateComponent({refresh: true});
+              }
+            }, error => this.globalService.openSnackBar(error.message))
+        }
+      }
+    });
   }
 
   getPosts() {
