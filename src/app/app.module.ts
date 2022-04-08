@@ -14,33 +14,31 @@ import { PostComponent } from './pages/posts/post/post.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
-import {MatDialogModule} from '@angular/material/dialog';
-import { AddPostDialogComponent } from './components/modal-dialogs/add-post-dialog/add-post-dialog.component';
+import {MatDialogModule} from '@angular/material/dialog'
 import { PostInfoComponent } from './pages/post-info/post-info.component';
 import {MatListModule} from "@angular/material/list";
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { CommentComponent } from "./pages/post-info/comment/comment.component";
 import { FilterPipe } from './shared/pipes/filter.pipe';
-import { EditPostDialogComponent } from './components/modal-dialogs/edit-post-dialog/edit-post-dialog.component';
 import { ErrorPageComponent } from './pages/error-page/error-page.component';
 import { AppLayoutComponent } from './shared/layouts/app-layout/app-layout.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatMenuModule} from "@angular/material/menu";
 import { ProgressSpinnerComponent } from './components/progress-spinner/progress-spinner.component';
+import { PostCrudDialogComponent } from './components/modal-dialogs/post-crud-dialog/post-crud-dialog.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         PostsComponent,
         PostComponent,
-        AddPostDialogComponent,
         PostInfoComponent,
         CommentComponent,
         FilterPipe,
-        EditPostDialogComponent,
         ErrorPageComponent,
         AppLayoutComponent,
-        ProgressSpinnerComponent
+        ProgressSpinnerComponent,
+        PostCrudDialogComponent
     ],
   imports: [
     BrowserModule,

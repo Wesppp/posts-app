@@ -2,8 +2,8 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Post} from "../../../shared/interfaces/post";
 import {PostService} from "../../../shared/services/post.service";
 import {MatDialog} from "@angular/material/dialog";
-import {EditPostDialogComponent} from "../../../components/modal-dialogs/edit-post-dialog/edit-post-dialog.component";
 import {GlobalService} from "../../../shared/services/global.service";
+import {PostCrudDialogComponent} from "../../../components/modal-dialogs/post-crud-dialog/post-crud-dialog.component";
 
 @Component({
   selector: 'app-post',
@@ -41,7 +41,20 @@ export class PostComponent implements OnInit {
 
   openEditModal(post: Post, $event: any) {
     $event.stopPropagation()
-      this.dialog.open(EditPostDialogComponent);
+    this.dialog.open(PostCrudDialogComponent, {
+      data: {
+        title: 'Editing a post',
+        func: (title: string, body: string, id: number) => {
+          this.postService.editPost({title, body} as Post, id)
+            .subscribe(data => {
+              if (data) {
+                console.log(data)
+                this.globalService.openSnackBar("The post was edited")
+              }
+            }, error => this.globalService.openSnackBar(error.message))
+        }
+      }
+    });
     this.globalService.updateComponent(post);
   }
 }
