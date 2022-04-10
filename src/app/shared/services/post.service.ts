@@ -4,13 +4,14 @@ import {catchError, Observable} from "rxjs";
 import {Post} from "../interfaces/post";
 import {Comment} from "../interfaces/comment";
 import {GlobalService} from "./global.service";
+import { environment } from "../../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class PostService {
-  postsUrl: string = "http://localhost:3000/posts"
-  commentsUrl: string = "https://jsonplaceholder.typicode.com/posts"
+  postsUrl = environment.postsHost
+  commentsUrl = environment.commentsHost
 
   constructor(private http: HttpClient,
               private globalService: GlobalService) { }

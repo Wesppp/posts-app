@@ -3,12 +3,13 @@ import {HttpClient} from "@angular/common/http";
 import {catchError, Observable} from "rxjs";
 import {User} from "../interfaces/user";
 import {GlobalService} from "./global.service";
+import { environment } from "../../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  usersUrl = 'https://jsonplaceholder.typicode.com/users'
+  usersUrl = environment.usersHost
 
   constructor(private http: HttpClient,
               private globalService: GlobalService) { }
