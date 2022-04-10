@@ -2,7 +2,6 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Post} from "../../../shared/interfaces/post";
 import {PostService} from "../../../shared/services/post.service";
 import {MatDialog} from "@angular/material/dialog";
-import {GlobalService} from "../../../shared/services/global.service";
 import {PostCrudDialogComponent} from "../../../components/modal-dialogs/post-crud-dialog/post-crud-dialog.component";
 
 @Component({
@@ -15,7 +14,6 @@ export class PostComponent implements OnInit {
   @Input() post: Post = {id: 0, title: '', body: ''}
 
   constructor(private postService: PostService,
-              private globalService: GlobalService,
               private dialog: MatDialog) {
   }
 
@@ -24,17 +22,17 @@ export class PostComponent implements OnInit {
 
   deletePost(id: number, $event: any) {
     $event.stopPropagation()
-    this.globalService.customConfirm().then((result) => {
+    this.postService.customConfirm().then((result) => {
       if (result.isConfirmed) {
         this.postService.deletePost(id)
           .subscribe(post => {
             if (post) {
-              this.globalService.openSnackBar("The post was successfully deleted")
-              this.globalService.updateComponent({refresh: true});
+              this.postService.openSnackBar("The post was successfully deleted")
+              this.postService.updateComponent({refresh: true});
             } else {
-              this.globalService.openSnackBar("Something went wrong")
+              this.postService.openSnackBar("Something went wrong")
             }
-          }, error => this.globalService.openSnackBar(error.message))
+          }, error => this.postService.openSnackBar(error.message))
       }
     })
   }
@@ -49,12 +47,12 @@ export class PostComponent implements OnInit {
             .subscribe(data => {
               if (data) {
                 console.log(data)
-                this.globalService.openSnackBar("The post was edited")
+                this.postService.openSnackBar("The post was edited")
               }
-            }, error => this.globalService.openSnackBar(error.message))
+            }, error => this.postService.openSnackBar(error.message))
         }
       }
     });
-    this.globalService.updateComponent(post);
+    this.postService.updateComponent(post);
   }
 }

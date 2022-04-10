@@ -1,7 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {Post} from "../../../shared/interfaces/post";
 import {MAT_DIALOG_DATA} from "@angular/material/dialog";
-import {GlobalService} from "../../../shared/services/global.service";
+import {PostService} from "../../../shared/services/post.service";
 
 @Component({
   selector: 'app-post-crud-dialog',
@@ -15,13 +15,12 @@ export class PostCrudDialogComponent implements OnInit {
   constructor(@Inject(MAT_DIALOG_DATA) public data: {
                 title: string,
                 func: any
-              },
-              private globalService: GlobalService) {
+              }, private postService: PostService) {
 
   }
 
   ngOnInit(): void {
-    this.globalService.updateObservable$.subscribe(post => {
+    this.postService.updateObservable$.subscribe(post => {
       if(post) {
         this.post = post;
       }
