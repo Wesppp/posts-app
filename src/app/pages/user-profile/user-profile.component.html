@@ -1,47 +1,53 @@
-<mat-grid-list cols="3" rowHeight="2:2">
-  <mat-grid-tile>
-    <div class="user-card">
-      <img class="avatar" [src]="getAvatar(user.id)" alt="Avatar">
-      <h2 class="name">{{ user.name }}</h2>
-      <p class="email">{{ user.email }}</p>
-      <p class="job">works in {{ user.company.name }}</p>
-    </div>
-  </mat-grid-tile>
-  <mat-grid-tile colspan="2">
-    <ul class="user-info">
-      <li role="listitem">
-        <div class="info-title">Nickname</div>
-        <div class="info-text">{{ user.username }}</div>
-      </li>
-      <hr>
-      <li role="listitem">
-        <div class="info-title">Website</div>
-        <div class="info-text">{{ user.website }}</div>
-      </li>
-      <hr>
-      <li role="listitem">
-        <div class="info-title">City</div>
-        <div class="info-text">{{ user.address.city }}</div>
-      </li>
-      <hr>
-      <li role="listitem">
-        <div class="info-title">Street</div>
-        <div class="info-text">{{ user.address.street }}</div>
-      </li>
-      <hr>
-      <li role="listitem">
-        <div class="info-title">Email</div>
-        <div class="info-text">{{ user.email }}</div>
-      </li>
-    </ul>
-  </mat-grid-tile>
-</mat-grid-list>
-<div class="additional-info">
-  <small>{{ user.company.catchPhrase }}, </small>
-  <small>zipcode {{ user.address.zipcode }}</small>
-  <br>
-  <small>bs {{ user.company.bs }}</small>
+<div *ngIf="!isLoading; else loading">
+  <mat-grid-list cols="3" rowHeight="2:2">
+    <button class="back-btn" mat-raised-button color="accent" routerLink="/users">Go back</button>
+    <mat-grid-tile>
+      <div class="user-card">
+        <img class="avatar" [src]="getAvatar(user.id)" alt="Avatar">
+        <h2 class="name">{{ user.name }}</h2>
+        <p class="email">{{ user.email }}</p>
+        <p class="job">works in {{ user.company.name }}</p>
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="2">
+      <ul class="user-info">
+        <li role="listitem">
+          <div class="info-title">Nickname</div>
+          <div class="info-text">{{ user.username }}</div>
+        </li>
+        <hr>
+        <li role="listitem">
+          <div class="info-title">Website</div>
+          <div class="info-text">{{ user.website }}</div>
+        </li>
+        <hr>
+        <li role="listitem">
+          <div class="info-title">City</div>
+          <div class="info-text">{{ user.address.city }}</div>
+        </li>
+        <hr>
+        <li role="listitem">
+          <div class="info-title">Street</div>
+          <div class="info-text">{{ user.address.street }}</div>
+        </li>
+        <hr>
+        <li role="listitem">
+          <div class="info-title">Email</div>
+          <div class="info-text">{{ user.email }}</div>
+        </li>
+      </ul>
+    </mat-grid-tile>
+  </mat-grid-list>
+  <div class="additional-info">
+    <small>{{ user.company.catchPhrase }}, </small>
+    <small>zipcode {{ user.address.zipcode }}</small>
+    <br>
+    <small>bs {{ user.company.bs }}</small>
+  </div>
 </div>
 
-<app-progress-spinner *ngIf="isLoading"></app-progress-spinner>
+<ng-template #loading>
+  <app-progress-spinner></app-progress-spinner>
+</ng-template>
+
 
