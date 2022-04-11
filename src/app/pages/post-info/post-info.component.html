@@ -1,17 +1,22 @@
 <h1>Post</h1>
-<mat-card class="post">
-  <mat-card-title class="post-title">{{ post.title }}</mat-card-title>
-  <mat-card-subtitle>
-    <p>
-      {{ post.body }}
-    </p>
-  </mat-card-subtitle>
-</mat-card>
+<div *ngIf="!isLoading; else loading">
+  <mat-card class="post">
+    <mat-card-title class="post-title">{{ post.title }}</mat-card-title>
+    <mat-card-subtitle>
+      <p>
+        {{ post.body }}
+      </p>
+    </mat-card-subtitle>
+  </mat-card>
 
-<ul class="list">
-  <li *ngFor="let comment of comments">
-    <app-comment [comment]="comment"></app-comment>
-  </li>
-</ul>
+  <ul class="list">
+    <li *ngFor="let comment of comments">
+      <app-comment [comment]="comment"></app-comment>
+    </li>
+  </ul>
+</div>
 
-<app-progress-spinner *ngIf="isLoading"></app-progress-spinner>
+<ng-template #loading>
+  <app-progress-spinner></app-progress-spinner>
+</ng-template>
+

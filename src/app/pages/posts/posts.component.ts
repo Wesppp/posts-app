@@ -12,7 +12,7 @@ import {PostCrudDialogComponent} from "../../components/modal-dialogs/post-crud-
 export class PostsComponent implements OnInit {
   search: string = ''
   posts: Post[] = []
-  post: Post = {id: 0, title: '', body: ''}
+  post: Post = {userId: 0, id: 0, title: '', body: ''}
   isLoading: boolean = false
 
   constructor(private postService: PostService,
@@ -22,9 +22,10 @@ export class PostsComponent implements OnInit {
   ngOnInit(): void {
     this.getPosts()
 
-    this.postService.updateObservable$.subscribe(res => {
-      if(res.refresh) {
-        this.getPosts();
+    this.postService.updateObservable$.subscribe(post => {
+      if (post) {
+        post.id = this.posts.length+1
+        this.posts.push(post)
       }
     }, error => this.postService.openSnackBar(error.message))
   }
@@ -33,12 +34,13 @@ export class PostsComponent implements OnInit {
     this.dialog.open(PostCrudDialogComponent, {
       data: {
         title: 'Adding a new post',
-        func: (title: string, body: string, id?:number) => {
-          this.postService.addPost({title, body} as Post)
+        func: (title: string, body: string) => {
+          let userId = Math.floor(Math.random() * (10 - 1)) + 1
+          this.postService.addPost({title, body, userId} as Post)
             .subscribe(post => {
               if (post) {
                 this.postService.openSnackBar("Post was added!")
-                this.postService.updateComponent({refresh: true});
+                this.postService.updateComponent(post)
               }
             }, error => this.postService.openSnackBar(error.message))
         }
@@ -51,11 +53,20 @@ export class PostsComponent implements OnInit {
     this.postService.getPosts()
       .subscribe(posts => {
         if (posts) {
-          this.posts = posts
+          this.posts = posts.slice(0, 5)
           this.isLoading = false
         } else {
           this.postService.openSnackBar('something went wrong')
         }
       }, error => this.postService.openSnackBar(error.message))
   }
+
+  deletePost(id: number) {
+    this.posts = this.posts.filter(post => post.id !== id)
+  }
+
+  editPost(editedPost: Post) {
+    this.posts = this.posts.map(post => editedPost.id === post.id? editedPost: post)
+  }
+
 }

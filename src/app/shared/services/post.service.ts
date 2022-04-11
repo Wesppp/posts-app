@@ -60,7 +60,7 @@ export class PostService {
   }
 
   editPost(post: Post, id: number): Observable<any> {
-    const url = `${this.commentsUrl}/${id}`
+    const url = `${this.postsUrl}/${id}`
     return this.http.put(url, post, this.httpOptions);
   }
 

@@ -11,7 +11,7 @@ import {PostService} from "../../shared/services/post.service";
 })
 export class PostInfoComponent implements OnInit {
   comments: Comment[] = []
-  post: Post = {id: 0, title: '', body: ''}
+  post: Post = {userId: 0, id: 0, title: '', body: ''}
   isLoading: boolean = false
 
   constructor(private route: ActivatedRoute,
@@ -22,7 +22,6 @@ export class PostInfoComponent implements OnInit {
     this.route.params.subscribe((params: Params) => {
       this.getPost(params['id'])
       this.getComments(params['id'])
-      this.isLoading = false
     }, error => this.postService.openSnackBar(error.message))
   }
 
@@ -31,6 +30,7 @@ export class PostInfoComponent implements OnInit {
       .subscribe(post => {
         if (post) {
           this.post = post
+          this.isLoading = false
         }
       }, error => this.postService.openSnackBar(error.message))
   }

@@ -10,7 +10,7 @@ import {PostService} from "../../../shared/services/post.service";
 })
 export class PostCrudDialogComponent implements OnInit {
   posts: Post[] = []
-  post: Post = {id: 0, title: '', body: ''}
+  post: Post = {userId: 0, id: 0, title: '', body: ''}
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: {
                 title: string,

@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  postsHost: 'http://localhost:3000/posts',
+  postsHost: 'https://jsonplaceholder.typicode.com/posts',
   commentsHost: 'https://jsonplaceholder.typicode.com/posts'
 };
 
