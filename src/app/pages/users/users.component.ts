@@ -26,7 +26,7 @@ export class UsersComponent implements OnInit {
     this.userService.getUsers()
       .subscribe(users => {
         if (users.length) {
-          this.users = users
+          this.users = users.slice(0,4)
           console.log(users)
           this.isLoading = false
         }

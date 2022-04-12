@@ -28,3 +28,13 @@ hr {
     margin: 20px 0;
   }
 }
+
+.add-btn {
+  display: flex;
+  margin-right: 10px;
+
+  .add-btn-item {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+}
