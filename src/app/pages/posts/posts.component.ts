@@ -21,13 +21,6 @@ export class PostsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getPosts()
-
-    this.postService.updateObservable$.subscribe(post => {
-      if (post) {
-        post.id = this.posts.length+1
-        this.posts.push(post)
-      }
-    }, error => this.postService.openSnackBar(error.message))
   }
 
   openDialog() {
@@ -40,7 +33,8 @@ export class PostsComponent implements OnInit {
             .subscribe(post => {
               if (post) {
                 this.postService.openSnackBar("Post was added!")
-                this.postService.updateComponent(post)
+                post.id = this.posts.length+1
+                this.posts.push(post)
               }
             }, error => this.postService.openSnackBar(error.message))
         }

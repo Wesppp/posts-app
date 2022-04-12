@@ -1,4 +1,5 @@
-<mat-card [routerLink]="['/posts', post.id]" class="post">
+<mat-card [routerLink]="['/posts', post.id]" class="post"
+          (click)="givePost(post)">
   <mat-card-title>{{ post.title }}</mat-card-title>
   <mat-card-subtitle>
     <p>

@@ -55,5 +55,10 @@ export class PostComponent implements OnInit {
         }
       }
     });
+    this.postService.updateComponent(post)
+  }
+
+  givePost(post: Post) {
+    this.postService.updateComponent(post)
   }
 }

@@ -20,19 +20,14 @@ export class PostInfoComponent implements OnInit {
   ngOnInit(): void {
     this.isLoading = true
     this.route.params.subscribe((params: Params) => {
-      this.getPost(params['id'])
       this.getComments(params['id'])
     }, error => this.postService.openSnackBar(error.message))
-  }
 
-  getPost(id: number) {
-    this.postService.getPost(id)
-      .subscribe(post => {
-        if (post) {
-          this.post = post
-          this.isLoading = false
-        }
-      }, error => this.postService.openSnackBar(error.message))
+    this.postService.updateObservable$.subscribe(post => {
+      if(post) {
+        this.post = post;
+      }
+    })
   }
 
   getComments(id: number) {
@@ -40,6 +35,7 @@ export class PostInfoComponent implements OnInit {
       .subscribe(comments => {
         if (comments.length) {
           this.comments = comments
+          this.isLoading = false
         }
       }, error => this.postService.openSnackBar(error.message))
   }
