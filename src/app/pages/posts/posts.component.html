@@ -12,7 +12,8 @@
 
 <div class="posts-container" *ngIf="!isLoading">
   <app-post *ngFor="let post of posts | filter:'title':search"
-            [post]="post" [posts]="posts"></app-post>
+            [post]="post" [posts]="posts" (deletePosts)="deletePost($event)"
+            (editPost)="editPost($event)"></app-post>
 </div>
 
 <app-progress-spinner *ngIf="isLoading"></app-progress-spinner>
