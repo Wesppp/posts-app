@@ -12,29 +12,24 @@ import {PostService} from "../../shared/services/post.service";
 })
 export class PostInfoComponent implements OnInit {
   comments: Comment[] = []
-  post: Post = {id: 0, title: '', body: ''}
+  post: Post = {userId: 0, id: 0, title: '', body: ''}
   isLoading: boolean = false
 
-  constructor(private globalService: GlobalService,
-              private route: ActivatedRoute,
-              private postService: PostService) { }
+  constructor(private route: ActivatedRoute,
+              private postService: PostService,
+              private globalService: GlobalService) { }
 
   ngOnInit(): void {
     this.isLoading = true
     this.route.params.subscribe((params: Params) => {
-      this.getPost(params['id'])
       this.getComments(params['id'])
-      this.isLoading = false
-    })
-  }
+    }, error => this.globalService.openSnackBar(error.message))
 
-  getPost(id: number) {
-    this.postService.getPost(id)
-      .subscribe(post => {
-        if (post) {
-          this.post = post
-        }
-      }, error => this.globalService.openSnackBar(error.message()))
+    this.globalService.updateObservable$.subscribe(post => {
+      if(post) {
+        this.post = post;
+      }
+    })
   }
 
   getComments(id: number) {
@@ -42,7 +37,8 @@ export class PostInfoComponent implements OnInit {
       .subscribe(comments => {
         if (comments.length) {
           this.comments = comments
+          this.isLoading = false
         }
-      }, error => this.globalService.openSnackBar(error.message()))
+      }, error => this.globalService.openSnackBar(error.message))
   }
 }

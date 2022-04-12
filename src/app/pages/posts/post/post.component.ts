@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Post} from "../../../shared/interfaces/post";
 import {PostService} from "../../../shared/services/post.service";
 import {MatDialog} from "@angular/material/dialog";
@@ -12,11 +12,13 @@ import {PostCrudDialogComponent} from "../../../components/modal-dialogs/post-cr
 })
 export class PostComponent implements OnInit {
   @Input() posts: Post[] = []
-  @Input() post: Post = {id: 0, title: '', body: ''}
+  @Input() post: Post = {userId: 0, id: 0, title: '', body: ''}
+  @Output() deletePosts = new EventEmitter<number>();
+  @Output() editPost = new EventEmitter<Post>();
 
   constructor(private postService: PostService,
-              private globalService: GlobalService,
-              private dialog: MatDialog) {
+              private dialog: MatDialog,
+              private globalService: GlobalService) {
   }
 
   ngOnInit(): void {
@@ -30,7 +32,7 @@ export class PostComponent implements OnInit {
           .subscribe(post => {
             if (post) {
               this.globalService.openSnackBar("The post was successfully deleted")
-              this.globalService.updateComponent({refresh: true});
+              this.deletePosts.emit(id)
             } else {
               this.globalService.openSnackBar("Something went wrong")
             }
@@ -41,20 +43,24 @@ export class PostComponent implements OnInit {
 
   openEditModal(post: Post, $event: any) {
     $event.stopPropagation()
-      this.dialog.open(PostCrudDialogComponent, {
-        data: {
-          title: 'Editing a post',
-          func: (title: string, body: string, id: number) => {
-            this.postService.editPost({title, body} as Post, id)
-              .subscribe(data => {
-                if (data) {
-                  console.log(data)
-                  this.globalService.openSnackBar("The post was edited")
-                }
-              }, error => this.globalService.openSnackBar(error.message))
-          }
+    this.dialog.open(PostCrudDialogComponent, {
+      data: {
+        title: 'Editing a post',
+        func: (title: string, body: string) => {
+          this.postService.editPost({title, body, userId: post.userId} as Post, post.id)
+            .subscribe(post => {
+              if (post) {
+                this.globalService.openSnackBar("The post was edited")
+                this.editPost.emit(post)
+              }
+            }, error => this.globalService.openSnackBar(error.message))
         }
-      });
-    this.globalService.updateComponent(post);
+      }
+    });
+    this.globalService.updateComponent(post)
+  }
+
+  givePost(post: Post) {
+    this.globalService.updateComponent(post)
   }
 }
