@@ -40,6 +40,7 @@ export class PostsComponent implements OnInit {
         }
       }
     });
+    this.postService.updateComponent(this.post)
   }
 
   getPosts() {
