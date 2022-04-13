@@ -1,11 +1,11 @@
-<form #addPostForm="ngForm">
+<form #postForm="ngForm">
   <h1 mat-dialog-title>{{ data.title }}</h1>
   <div mat-dialog-content class="dialog-content">
     <h2>Title</h2>
     <mat-form-field class="example-full-width" appearance="fill">
       <mat-label>Post title</mat-label>
       <input matInput placeholder="Some title"
-             [(ngModel)]="post.title"
+             [ngModel]="post.title"
              maxlength="80"
              type="text"
              name="title" required
@@ -20,7 +20,7 @@
     <mat-form-field class="example-full-width" appearance="fill">
       <mat-label>Post text</mat-label>
       <textarea matInput placeholder="Ex. It makes me feel..."
-                [(ngModel)]="post.body"
+                [ngModel]="post.body"
                 name="post-content" required
                 class="post-text"
                 maxlength="400"
@@ -32,9 +32,9 @@
     </small>
   </div>
   <div mat-dialog-actions>
-    <button [disabled]="addPostForm.invalid"
+    <button [disabled]="postForm.invalid"
             mat-raised-button (click)="data.func(postTitle.value, postBody.value, post.id)"
-            color="primary" mat-dialog-close>Add</button>
-    <button mat-raised-button color="" mat-dialog-close>Close</button>
+            color="primary" mat-dialog-close>SAVE</button>
+    <button mat-raised-button color="" mat-dialog-close>CLOSE</button>
   </div>
 </form>

@@ -42,6 +42,7 @@ export class PostsComponent implements OnInit {
         }
       }
     });
+    this.globalService.updateComponent(this.post)
   }
 
   getPosts() {

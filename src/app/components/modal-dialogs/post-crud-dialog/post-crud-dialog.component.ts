@@ -26,6 +26,6 @@ export class PostCrudDialogComponent implements OnInit {
       if(post) {
         this.post = post;
       }
-    })
+    }, error => this.globalService.openSnackBar(error.message()))
   }
 }

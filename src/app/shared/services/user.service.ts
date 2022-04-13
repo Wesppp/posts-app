@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {catchError, Observable} from "rxjs";
 import {User} from "../interfaces/user";
 import {GlobalService} from "./global.service";
@@ -27,7 +27,17 @@ export class UserService {
     )
   }
 
+  addUser(user: User): Observable<User> {
+    return this.http.post<User>(this.usersUrl, user, this.httpOptions).pipe(
+      catchError(this.globalService.handleError<User>("add user"))
+    )
+  }
+
   getAvatar(id: number) {
     return `./assets/avatars/avatar${id}.png`
   }
+
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
 }

@@ -1,6 +1,70 @@
-<h1 mat-dialog-title>Dialog with elements</h1>
-<div mat-dialog-content>This dialog showcases the title, close, content and actions elements.</div>
-<div mat-dialog-actions>
-  <button mat-raised-button color="primary" mat-dialog-close>SAVE</button>
-  <button mat-button mat-dialog-close>CLOSE</button>
-</div>
+<form #userForm="ngForm" id="user-form">
+  <h1 mat-dialog-title>Adding new user</h1>
+  <div mat-dialog-content>
+
+    <mat-form-field appearance="fill" class="name first-input">
+      <mat-label>Name</mat-label>
+      <input matInput name="name" required [(ngModel)]="user.name"
+             #name="ngModel" type="text" class="name-input"
+             placeholder="Misha Shesn" pattern="[A-Za-zА-Яа-яЁё]{1,30}">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="username">
+      <mat-label>Username</mat-label>
+      <input matInput name="username" required [(ngModel)]="user.username"
+             #userName="ngModel" type="text" class="username-input"
+             placeholder="Samantha">
+    </mat-form-field>
+
+    <br>
+
+    <mat-form-field appearance="fill" class="email first-input">
+      <mat-label>Enter email</mat-label>
+      <input matInput placeholder="pat@example.com" [(ngModel)]="user.email" required
+             #userEmail="ngModel" class="email-input" name="user-email" type="email"
+              pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="company">
+      <mat-label>Company</mat-label>
+      <input matInput name="user-company" required [(ngModel)]="user.company"
+             #userCompany="ngModel" type="text" class="company-input"
+             placeholder="Romaguera-Crona" pattern="[A-Za-zА-Яа-яЁё0-9]{1,30}">
+    </mat-form-field>
+
+    <br>
+
+    <mat-form-field appearance="fill" class="city first-input">
+      <mat-label>City</mat-label>
+      <input matInput name="user-city" required [(ngModel)]="user.address.city"
+             #userCity="ngModel" type="text" class="city-input"
+             pattern="[A-Za-zА-Яа-яЁё]{1,30}"
+             placeholder="Gomel">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="street">
+      <mat-label>Street</mat-label>
+      <input matInput name="user-street" required [(ngModel)]="user.address.street"
+             #userStreet="ngModel" type="text" class="street-input"
+             pattern="[A-Za-zА-Яа-яЁё0-9]{1,30}"
+             placeholder="Kirova">
+    </mat-form-field>
+
+    <br>
+
+    <mat-form-field appearance="fill" class="website first-input">
+      <mat-label>Website</mat-label>
+      <input matInput name="user-website" required [(ngModel)]="user.website"
+             #userWebsite="ngModel" type="text" class="website-input"
+             maxlength="30"
+             placeholder="kale.biz">
+    </mat-form-field>
+
+  </div>
+  <div mat-dialog-actions>
+    <button mat-raised-button [disabled]="userForm.invalid"
+            (click)="data.func(user)" color="primary" mat-dialog-close>SAVE</button>
+    <button mat-button mat-dialog-close>CLOSE</button>
+  </div>
+</form>
+

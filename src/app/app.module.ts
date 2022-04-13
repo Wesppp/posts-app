@@ -30,6 +30,7 @@ import { UserProfileComponent } from './pages/user-profile/user-profile.componen
 import { ProgressSpinnerComponent } from "./components/progress-spinner/progress-spinner.component";
 import { PostCrudDialogComponent } from './components/modal-dialogs/post-crud-dialog/post-crud-dialog.component';
 import { AddUserDialogComponent } from './components/modal-dialogs/add-user-dialog/add-user-dialog.component';
+import { UserComponent } from './pages/users/user/user.component';
 
 @NgModule({
     declarations: [
@@ -45,7 +46,8 @@ import { AddUserDialogComponent } from './components/modal-dialogs/add-user-dial
         UserProfileComponent,
         ProgressSpinnerComponent,
         PostCrudDialogComponent,
-        AddUserDialogComponent
+        AddUserDialogComponent,
+        UserComponent
     ],
   imports: [
     BrowserModule,

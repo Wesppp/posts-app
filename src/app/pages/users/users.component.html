@@ -11,13 +11,9 @@
 </div>
 
 <mat-grid-list id="users-grid" cols="2" rowHeight="2:1">
-  <mat-grid-tile *ngFor="let user of users | filter:'name':search" [routerLink]="['/user-profile', user.id]">
-    <div class="user-card">
-      <img class="avatar" [src]="getAvatar(user.id)" alt="Avatar">
-      <h2 class="name">{{ user.name }}</h2>
-      <p class="email">{{ user.email}}</p>
-      <p class="job">works in {{ user.company.name }}</p>
-    </div>
+  <mat-grid-tile *ngFor="let user of users | filter:'name':search" [routerLink]="['/user-profile', user.id]"
+                 (click)="giveUser(user)">
+    <app-user [user]="user"></app-user>
   </mat-grid-tile>
 </mat-grid-list>
 

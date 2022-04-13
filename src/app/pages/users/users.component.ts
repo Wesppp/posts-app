@@ -36,11 +36,24 @@ export class UsersComponent implements OnInit {
       }, error => this.globalService.openSnackBar(error.message))
   }
 
-  getAvatar(id: number) {
-    return this.userService.getAvatar(id)
+  openModal() {
+    this.dialog.open(AddUserDialogComponent, {
+      data: {
+        func: (user: User) => {
+          this.userService.addUser(user)
+            .subscribe(user => {
+              if (user) {
+                this.globalService.openSnackBar("User was added!")
+                user.id = this.users.length+1
+                this.users.push(user)
+              }
+            }, error => this.globalService.openSnackBar(error.message))
+        }
+      }
+    })
   }
 
-  openModal() {
-    this.dialog.open(AddUserDialogComponent)
+  giveUser(user: User) {
+    this.globalService.updateComponent(user)
   }
 }

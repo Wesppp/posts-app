@@ -15,26 +15,6 @@ h1 {
     }
   }
 
-  .user-card {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    p {
-      margin: 0;
-      color: #6c757d;
-    }
-
-    h2 {
-      margin: 0;
-    }
-
-    .avatar {
-      width: 100px;
-      margin-bottom: 15px;
-    }
-  }
 }
 
 hr {
