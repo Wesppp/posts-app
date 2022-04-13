@@ -10,7 +10,7 @@ import {GlobalService} from "../../shared/services/global.service";
   styleUrls: ['./user-profile.component.scss']
 })
 export class UserProfileComponent implements OnInit {
-  url = '';
+  url: string | ArrayBuffer | null = '';
   user: User = <User>{}
   isLoading: boolean = false;
 
@@ -33,16 +33,14 @@ export class UserProfileComponent implements OnInit {
     return this.userService.getAvatar(id)
   }
 
-  // @ts-ignore
-  onSelectFile(event) {
+  onSelectFile(event: any) {
     if (event.target.files && event.target.files[0]) {
       let reader = new FileReader();
 
       reader.readAsDataURL(event.target.files[0]);
 
       reader.onload = (event) => {
-        // @ts-ignore
-        this.url = event.target.result;
+        this.url = event.target ? event.target.result : this.getAvatar(10)
       }
     }
   }
