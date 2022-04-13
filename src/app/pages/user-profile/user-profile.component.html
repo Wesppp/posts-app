@@ -3,7 +3,13 @@
     <button class="back-btn" mat-raised-button color="accent" routerLink="/users">Go back</button>
     <mat-grid-tile>
       <div class="user-card">
-        <img class="avatar" [src]="getAvatar(user.id)" alt="Avatar">
+        <label class="hoverable" for="fileInput">
+          <img [src]="url ? url : getAvatar(user.id)">
+          <div class="hover-text">Choose file</div>
+          <div class="background"></div>
+        </label>
+        <br>
+        <input id="fileInput" type='file' (change)="onSelectFile($event)">
         <h2 class="name">{{ user.name }}</h2>
         <p class="email">{{ user.email }}</p>
         <p class="job">works in {{ user.company.name }}</p>
