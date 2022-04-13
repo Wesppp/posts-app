@@ -38,9 +38,9 @@ export class UserProfileComponent implements OnInit {
     if (event.target.files && event.target.files[0]) {
       let reader = new FileReader();
 
-      reader.readAsDataURL(event.target.files[0]); // read file as data url
+      reader.readAsDataURL(event.target.files[0]);
 
-      reader.onload = (event) => { // called once readAsDataURL is completed
+      reader.onload = (event) => {
         // @ts-ignore
         this.url = event.target.result;
       }
