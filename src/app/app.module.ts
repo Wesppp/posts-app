@@ -29,6 +29,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 import { ProgressSpinnerComponent } from "./components/progress-spinner/progress-spinner.component";
 import { PostCrudDialogComponent } from './components/modal-dialogs/post-crud-dialog/post-crud-dialog.component';
+import { AddUserDialogComponent } from './components/modal-dialogs/add-user-dialog/add-user-dialog.component';
 
 @NgModule({
     declarations: [
@@ -43,7 +44,8 @@ import { PostCrudDialogComponent } from './components/modal-dialogs/post-crud-di
         UsersComponent,
         UserProfileComponent,
         ProgressSpinnerComponent,
-        PostCrudDialogComponent
+        PostCrudDialogComponent,
+        AddUserDialogComponent
     ],
   imports: [
     BrowserModule,

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {UserService} from "../../shared/services/user.service";
 import {User} from "../../shared/interfaces/user";
 import {GlobalService} from "../../shared/services/global.service";
+import {MatDialog} from "@angular/material/dialog";
+import {AddUserDialogComponent} from "../../components/modal-dialogs/add-user-dialog/add-user-dialog.component";
 
 @Component({
   selector: 'app-users',
@@ -15,7 +17,8 @@ export class UsersComponent implements OnInit {
   search: string = '';
 
   constructor(private userService: UserService,
-              private globalService: GlobalService) { }
+              private globalService: GlobalService,
+              private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.isLoading = true
@@ -35,5 +38,9 @@ export class UsersComponent implements OnInit {
 
   getAvatar(id: number) {
     return this.userService.getAvatar(id)
+  }
+
+  openModal() {
+    this.dialog.open(AddUserDialogComponent)
   }
 }
