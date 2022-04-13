@@ -5,7 +5,7 @@
     <mat-form-field class="example-full-width" appearance="fill">
       <mat-label>Post title</mat-label>
       <input matInput placeholder="Some title"
-             [(ngModel)]="post.title"
+             [ngModel]="post.title"
              maxlength="80"
              type="text"
              name="title" required
@@ -20,7 +20,7 @@
     <mat-form-field class="example-full-width" appearance="fill">
       <mat-label>Post text</mat-label>
       <textarea matInput placeholder="Ex. It makes me feel..."
-                [(ngModel)]="post.body"
+                [ngModel]="post.body"
                 name="post-content" required
                 class="post-text"
                 maxlength="400"
