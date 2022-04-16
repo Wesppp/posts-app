@@ -45,10 +45,10 @@
     </mat-grid-tile>
   </mat-grid-list>
   <div class="additional-info">
-    <small>{{ user.company.catchPhrase }}, </small>
-    <small>zipcode {{ user.address.zipcode }}</small>
+    <small>{{ user.company.catchPhrase || 'Centralized empowering task-force' }}, </small>
+    <small>zipcode {{ user.address.zipcode || 'target end-to-end models'}}</small>
     <br>
-    <small>bs {{ user.company.bs }}</small>
+    <small>bs {{ user.company.bs || '31428-2261' }}</small>
   </div>
 </div>
 
