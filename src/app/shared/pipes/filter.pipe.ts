@@ -10,10 +10,12 @@ export class FilterPipe implements PipeTransform {
       return data
     }
 
-    return data.filter(data => {
-      // @ts-ignore
-      return data[key].toLowerCase().includes(search.toLowerCase())
-    })
+    if (data && data.length) {
+      return data.filter(data => {
+        // @ts-ignore
+        return data[key].toLowerCase().includes(search.toLowerCase())
+      })
+    } else return data
   }
 
 }
